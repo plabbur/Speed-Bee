@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SpeedBeeApp: App {
+    @StateObject var speedBeeDataModel = SpeedBeeDataModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KeyboardView()
+                .environmentObject(speedBeeDataModel)
         }
     }
 }
