@@ -13,7 +13,7 @@ struct SpeedBeeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            KeyboardView()
+            NavView()
                 .environmentObject(speedBeeDataModel)
         }
     }

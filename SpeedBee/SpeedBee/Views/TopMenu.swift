@@ -15,7 +15,7 @@ struct TopMenu: View {
         GeometryReader { geometry in
             ZStack {
                 
-                Button(action: { dataModel.showHome = true }) {
+                Button(action: { dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME }) {
                     Image("backArrow")
                 }
                 .frame(width: geometry.size.width - 40, alignment: .leading)

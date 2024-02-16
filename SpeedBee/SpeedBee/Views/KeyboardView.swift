@@ -2,26 +2,58 @@ import SwiftUI
 import AVFoundation
 
 struct KeyboardView: View {
-    
+        
     @EnvironmentObject var dataModel: SpeedBeeDataModel
     @FocusState private var isFocused: Bool
+    @State var textInput: String = ""
     
     var body: some View {
         GeometryReader { geometry in
             let axisX: CGFloat = 62
+
+//             TEXT FIELD
             VStack {
+                TextField((dataModel.showHint ? dataModel.hintChars : ""), text: $textInput)
+                    .focused($isFocused)
+                    .frame(width: 300, height: 30)
+                    .autocapitalization(.allCharacters)
+                    .font(.system(size: 32))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .accentColor(.yellow)
+                    .foregroundColor(.black)
+                    .padding(.vertical, 10)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .onChange(of: textInput) { newValue in
+                        do {
+                            if textInput.count > 20 {
+                                dataModel.currentWord = String(textInput.uppercased())
+                                textInput = ""
+                            }
+                        }
+                    }
+                    .onAppear {
+                        isFocused = false
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                    .onTapGesture {
+                        isFocused = false
+                    }
+                    
+                
                 ZStack {
-                    // HEXAGONS
+//                     HEXAGONS
                     HStack {
                         // LEFT SIDE
                         VStack {
                             
                             // TOP LEFT
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[5])
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[5], textInput: $textInput)
                                 .position(x: 55 + axisX, y: 82)
                             
                             // BOTTOM LEFT
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[4])
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[4], textInput: $textInput)
                                 .position(x: 55 + axisX, y: -19)
                         }
                         
@@ -29,27 +61,27 @@ struct KeyboardView: View {
                         VStack {
                             
                             // TOP MIDDLE
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[0])
-                                .position(x: 0 + axisX, y: 38)
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[0], textInput: $textInput)
+                                    .position(x: 0 + axisX, y: 38)
                             
                             // CENTER MIDDLE
-                            CustomButtonView(imageName: "PolygonYellow", text: dataModel.letterCenter)
-                                .position(x: 0 + axisX, y: 0)
+                            CustomButtonView(imageName: "PolygonYellow", text: dataModel.letterCenter, textInput: $textInput)
+                                    .position(x: 0 + axisX, y: 0)
                             
                             // BOTTOM MIDDLE
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[3])
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[3], textInput: $textInput)
                                 .position(x: 0 + axisX, y: -38)
-                            
+
                         }
                         
                         // RIGHT SIDE
                         VStack {
                             // TOP RIGHT
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[1])
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[1], textInput: $textInput)
                                 .position(x: -55 + axisX, y: 82)
                             
                             // BOTTOM RIGHT
-                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[2])
+                            CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[2], textInput: $textInput)
                                 .position(x: -55 + axisX, y: -19)
                         }
                         
@@ -57,62 +89,64 @@ struct KeyboardView: View {
                     .frame(width: 390, height: 370)
                     
                     
-//                     BOTTOM BUTTONS
-//                    HStack {
-//                        
-//                        Button("Delete") {
-//                            deleteLastCharacter()
-//                        }
-//                        .padding(.horizontal)
-//                        .frame(width: 84.0, height: 40.0)
-//                        .foregroundColor(.black)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 30)
-//                                .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
-//                        )
-//                        
-//                        Button(action: {
-//                            dataModel.shuffleLetters()
-//                        }) {
-//                            Image("uiw_reload")
-//                                .padding()
-//                                .frame(width: 40.0, height: 40.0)
-//                                .overlay(
-//                                    RoundedRectangle(cornerRadius: 20)
-//                                        .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
-//                                )
-//                        }
-//                        .padding(.horizontal)
-//                        
-//                        Button("Enter") {
-//                            if textInput != "" {
-//                                dataModel.enterWord(word: dataModel.currentWord)
-//                            }
-//                            
-//                            textInput = ""
-//                        }
-//                        .padding(.horizontal)
-//                        .frame(width: 84.0, height: 40.0)
-//                        .foregroundColor(.black)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 20)
-//                                .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
-//                        )
-//                    }
-//                    .padding(.top, 250)
+                    // BOTTOM BUTTONS
+                    HStack {
+                        
+                        Button("Delete") {
+                            deleteLastCharacter()
+                        }
+                        .padding(.horizontal)
+                        .frame(width: 84.0, height: 40.0)
+                        .foregroundColor(.black)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
+                        )
+                        
+                        Button(action: {
+                            dataModel.shuffleLetters()
+                        }) {
+                            Image("uiw_reload")
+                                .padding()
+                                .frame(width: 40.0, height: 40.0)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
+                                )
+                        }
+                        .padding(.horizontal)
+                        
+                        Button("Enter") {
+                            if textInput != "" {
+                                dataModel.enterWord(word: textInput)
+                            }
+                            
+                            textInput = ""
+                        }
+                        .padding(.horizontal)
+                        .frame(width: 84.0, height: 40.0)
+                        .foregroundColor(.black)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 1)
+                        )
+                    }
+                    .padding(.top, 250)
                 }
             }
             .frame(width: geometry.size.width, alignment: .center)
         }
     }
     
+    
     private func deleteLastCharacter() {
-        if !dataModel.currentWord.isEmpty {
-            dataModel.currentWord.removeLast()
+        if !textInput.isEmpty {
+            textInput.removeLast()
             dataModel.showHint = false
         }
     }
 }
+
 
 struct CustomButtonView: View {
     
@@ -120,6 +154,7 @@ struct CustomButtonView: View {
 
     var imageName: String
     var text: String
+    @Binding var textInput: String
     
     @State private var sizeVal: CGFloat = 1.0
     @State private var isLongPressing = false
@@ -155,7 +190,7 @@ struct CustomButtonView: View {
                             AudioServicesPlaySystemSound(1104)
                         }
                         
-                        dataModel.addToCurrentWord(text)
+                        textInput += text
                     }
                 }
         }

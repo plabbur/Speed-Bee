@@ -17,29 +17,33 @@ struct NavView: View {
         GeometryReader { geometry in
             
             NavigationView {
-                TabView {
-                    HomeView()
-                        .onAppear(perform: { navHome = true })
-                        .tabItem {
-                            Label("Main", image: navHome ? "mainFill" : "mainUnfill")
-                        }
-                    StatsView(/* navTitle: false */)
-                        .onAppear(perform: { navHome = false })
-                        .tabItem {
-                            Label("Stats", image: !navHome ? "statsFill" : "statsUnfill")
-                        }
+                if dataModel.onScreen == SpeedBeeDataModel.viewMode.GAME {
+                    SpellingView()
+                } else {
+                    TabView {
+                        HomeView()
+                            .onAppear(perform: { dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME })
+                            .tabItem {
+                                Label("Main", image: dataModel.onScreen == SpeedBeeDataModel.viewMode.HOME ? "mainFill" : "mainUnfill")
+                            }
+                        StatsView()
+                            .onAppear(perform: { dataModel.onScreen = SpeedBeeDataModel.viewMode.STATISTICS })
+                            .tabItem {
+                                Label("Stats", image: dataModel.onScreen == SpeedBeeDataModel.viewMode.STATISTICS ? "statsFill" : "statsUnfill")
+                            }
+                    }
+                    .accentColor(.yellow)
+                    .onAppear {
+                        let appearance = UITabBarAppearance()
+                        appearance.backgroundColor = UIColor(Color.white)
+                        
+                        UITabBar.appearance().standardAppearance = appearance
+                        UITabBar.appearance().scrollEdgeAppearance = appearance
+                    }
+                    .overlay(
+                        dataModel.showLevels ? AnyView(ChooseLevelView()) : AnyView(EmptyView())
+                    )
                 }
-                .accentColor(.yellow)
-                .onAppear {
-                    let appearance = UITabBarAppearance()
-                    appearance.backgroundColor = UIColor(Color.white)
-                    
-                    UITabBar.appearance().standardAppearance = appearance
-                    UITabBar.appearance().scrollEdgeAppearance = appearance
-                }
-                .overlay(
-                    dataModel.showLevels ? AnyView(ChooseLevelView()) : AnyView(EmptyView())
-                )
             }
             .accentColor(.yellow)
         }

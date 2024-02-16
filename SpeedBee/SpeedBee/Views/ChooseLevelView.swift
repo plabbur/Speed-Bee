@@ -80,7 +80,6 @@ struct ChooseLevelView: View {
                         .font(.system(size: 20))
                         .frame(width: geometry.size.width, height: 400, alignment: .center)
                         .position(x: (geometry.size.width / 2), y: geometry.size.height - 20)
-                        
                     )
             }
             .frame(height: geometry.size.height + 200)
@@ -94,7 +93,7 @@ struct ChooseLevelView: View {
                     endPoint: .trailing
                 )
                 .onTapGesture {
-                    dataModel.showLevels = false
+                    dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME
                 }
             )
             .ignoresSafeArea()

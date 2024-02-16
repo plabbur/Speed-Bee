@@ -15,9 +15,7 @@ struct OptionsView: View {
     var doneButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-            dataModel.showNav = true
-//            dataModel.showOptions = false
-//            dataModel.showHome = true
+            dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME
         }) {
             Text("Done")
                 .foregroundColor(.accentColor)

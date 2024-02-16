@@ -27,6 +27,9 @@
 		E5BD35BC2B7D7FCE00659541 /* TimerHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */; };
 		E5BD35BE2B7D90EE00659541 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */; };
 		E5BD35C02B7D936400659541 /* ComplimentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BF2B7D936400659541 /* ComplimentView.swift */; };
+		E5E2F49B2B7ED4C100C9F140 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */; };
+		E5E2F49D2B7ED60600C9F140 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49C2B7ED60600C9F140 /* PauseView.swift */; };
+		E5E2F49F2B7EDF4000C9F140 /* EndgameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHints.swift; sourceTree = "<group>"; };
 		E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E5BD35BF2B7D936400659541 /* ComplimentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplimentView.swift; sourceTree = "<group>"; };
+		E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		E5E2F49C2B7ED60600C9F140 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +128,14 @@
 				E5BD35B12B7D725000659541 /* StatsView.swift */,
 				E5BD35B52B7D7EE600659541 /* StatsPlaqueView.swift */,
 				E5BD35B32B7D725800659541 /* SpellingView.swift */,
+				E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */,
+				E5E2F49C2B7ED60600C9F140 /* PauseView.swift */,
 				E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */,
 				E5BD35B72B7D7F8C00659541 /* WordsFound.swift */,
 				E5BD35B92B7D7FAA00659541 /* TopMenu.swift */,
 				E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */,
 				E5BD35BF2B7D936400659541 /* ComplimentView.swift */,
+				E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,7 +224,9 @@
 				E5BD35BC2B7D7FCE00659541 /* TimerHints.swift in Sources */,
 				E5BD35A02B7D6A8300659541 /* Statistic.swift in Sources */,
 				E5BD35AC2B7D6C8F00659541 /* SettingsView.swift in Sources */,
+				E5E2F49F2B7EDF4000C9F140 /* EndgameView.swift in Sources */,
 				E5BD35922B7D5D6000659541 /* ContentView.swift in Sources */,
+				E5E2F49D2B7ED60600C9F140 /* PauseView.swift in Sources */,
 				E5BD35B62B7D7EE600659541 /* StatsPlaqueView.swift in Sources */,
 				E5BD35902B7D5D6000659541 /* SpeedBeeApp.swift in Sources */,
 				E5BD35B42B7D725800659541 /* SpellingView.swift in Sources */,
@@ -226,6 +237,7 @@
 				E5BD35A62B7D6B2D00659541 /* HomeView.swift in Sources */,
 				E5BD35BE2B7D90EE00659541 /* KeyboardView.swift in Sources */,
 				E5BD35B02B7D723300659541 /* NavView.swift in Sources */,
+				E5E2F49B2B7ED4C100C9F140 /* ErrorMessage.swift in Sources */,
 				E5BD35A42B7D6ACB00659541 /* SpeedBeeDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

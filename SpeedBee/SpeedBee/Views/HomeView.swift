@@ -23,6 +23,9 @@ struct HomeView: View {
                         }
                         .frame(width: geometry.size.width - 40, alignment: .trailing)
                         .padding(.bottom, 100)
+                        .onTapGesture {
+                            dataModel.onScreen = SpeedBeeDataModel.viewMode.OPTIONS
+                        }
                         
                         Image("beeLogo")
                             .resizable() // Make the image resizable
@@ -43,7 +46,7 @@ struct HomeView: View {
                         Spacer()
                         
                         if !dataModel.gameOver {
-                            Button(action: { dataModel.showHome = false }) {
+                            Button(action: { dataModel.onScreen = SpeedBeeDataModel.viewMode.GAME }) {
                                 // Action to perform when the button is pressed
                                 ZStack {
                                     Text("Continue Game")
@@ -94,7 +97,6 @@ struct HomeView: View {
                         LinearGradient(gradient: Gradient(colors: [Color(red: 0.97, green: 0.85, blue: 0.24).opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02)]), startPoint: .top, endPoint: .bottom)
                     )
                     
-
                 }
                 
             }
@@ -104,7 +106,6 @@ struct HomeView: View {
         
     }
 }
-
 
 
 struct HomeView_Previews: PreviewProvider {
