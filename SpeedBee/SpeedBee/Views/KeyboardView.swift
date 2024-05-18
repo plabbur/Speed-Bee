@@ -11,7 +11,6 @@ struct KeyboardView: View {
         GeometryReader { geometry in
             let axisX: CGFloat = 62
 
-//             TEXT FIELD
             VStack {
                 TextField((dataModel.showHint ? dataModel.hintChars : ""), text: $textInput)
                     .focused($isFocused)
@@ -28,59 +27,43 @@ struct KeyboardView: View {
                     .onChange(of: textInput) { newValue in
                         do {
                             if textInput.count > 20 {
-                                dataModel.currentWord = String(textInput.uppercased())
-                                textInput = ""
+                                dataModel.enterWord(word: textInput)
                             }
                         }
                     }
                     .onAppear {
                         isFocused = false
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                    .onTapGesture {
-                        isFocused = false
                     }
                     
                 
                 ZStack {
-//                     HEXAGONS
                     HStack {
-                        // LEFT SIDE
                         VStack {
                             
-                            // TOP LEFT
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[5], textInput: $textInput)
                                 .position(x: 55 + axisX, y: 82)
                             
-                            // BOTTOM LEFT
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[4], textInput: $textInput)
                                 .position(x: 55 + axisX, y: -19)
                         }
                         
-                        // MIDDLE
                         VStack {
                             
-                            // TOP MIDDLE
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[0], textInput: $textInput)
                                     .position(x: 0 + axisX, y: 38)
                             
-                            // CENTER MIDDLE
                             CustomButtonView(imageName: "PolygonYellow", text: dataModel.letterCenter, textInput: $textInput)
                                     .position(x: 0 + axisX, y: 0)
                             
-                            // BOTTOM MIDDLE
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[3], textInput: $textInput)
                                 .position(x: 0 + axisX, y: -38)
 
                         }
                         
-                        // RIGHT SIDE
                         VStack {
-                            // TOP RIGHT
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[1], textInput: $textInput)
                                 .position(x: -55 + axisX, y: 82)
                             
-                            // BOTTOM RIGHT
                             CustomButtonView(imageName: "Polygon", text: dataModel.lettersOther[2], textInput: $textInput)
                                 .position(x: -55 + axisX, y: -19)
                         }
@@ -89,7 +72,6 @@ struct KeyboardView: View {
                     .frame(width: 390, height: 370)
                     
                     
-                    // BOTTOM BUTTONS
                     HStack {
                         
                         Button("Delete") {
@@ -147,7 +129,6 @@ struct KeyboardView: View {
     }
 }
 
-
 struct CustomButtonView: View {
     
     @EnvironmentObject var dataModel: SpeedBeeDataModel
@@ -197,9 +178,10 @@ struct CustomButtonView: View {
     }
 }
 
-struct KeyboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardView()
-            .environmentObject(SpeedBeeDataModel())
-    }
+
+#Preview {
+    KeyboardView()
+        .environmentObject(SpeedBeeDataModel())
 }
+
+

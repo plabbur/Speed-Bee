@@ -11,16 +11,18 @@ import SwiftUI
 class SpeedBeeDataModel: ObservableObject {
     @AppStorage("SoundsOn") var soundsOn: Bool = false
     @AppStorage("VibrationOn") var vibrationOn: Bool = false
-    @AppStorage("HintsOn") var hintsOn: Bool = false
+    @AppStorage("HintsOn") var hintsOn: Bool = true
     @AppStorage("LimitMistakes") var limitMistakesOn: Bool = true
     
     @Published var timePause = false
     @Published var timePlayed = 0
     @Published var timeRemaining = 0
-    @Published var gameModeDelay = true
     @Published var gameOver = true
+    @Published var gameTimeUnlimited = false
+    @Published var gameOverConfirm = false
     
-    @State var currentWord = ""
+    @Published var statTimeSelected = Double()
+    
     @Published var newWord = false
     @Published var wordsFound = [String]()
     
@@ -38,6 +40,7 @@ class SpeedBeeDataModel: ObservableObject {
     var pangramList = [String]()
     var mistakeCounter = 0
     var hintChars: String = ""
+    var currentWord: String = ""
     
     enum viewMode {
         case GAME
@@ -61,21 +64,11 @@ class SpeedBeeDataModel: ObservableObject {
         playedWords.append(chosenPangram)
         possibleWords.remove(at: possibleWords.firstIndex(of: chosenPangram) ?? 0)
         
-//        if currentStat.gamesPlayed >= possibleWords.count + playedWords.count {
-//            chosenPangram = possibleWords.randomElement()!
-//            playedWords.append(chosenPangram)
-//            possibleWords.remove(at: possibleWords.firstIndex(of: chosenPangram) ?? 0)
-//        } else {
-//            chosenPangram = playedWords.randomElement()!
-//            possibleWords.append(chosenPangram)
-//            playedWords.remove(at: playedWords.firstIndex(of: chosenPangram) ?? 0)
-//        }
-        
         pangramList = []
         for char in chosenPangram {
             pangramList.append(String(char))
         }
-                
+        
         var chosenLetters = Array(Set(pangramList))
         
         if let index = chosenLetters.firstIndex(of: "A") {
@@ -96,13 +89,18 @@ class SpeedBeeDataModel: ObservableObject {
     }
     
     func newGame() {
+        
+        if timeRemaining > 98999 {
+            gameTimeUnlimited = true
+        }
+        
         lettersChosen = getWord()
         
         letterCenter = lettersChosen[0]
         lettersOther = [lettersChosen[1], lettersChosen[2], lettersChosen[3], lettersChosen[4], lettersChosen[5], lettersChosen[6]]
         lettersOther.shuffle()
-        currentWord = ""
         wordsFound = [String]()
+        currentWord = ""
         pointsReceived = 0
         mistakeCounter = 0
         hintChars = "\(pangramList[0])\(pangramList[1])\(pangramList[2])..."
@@ -119,6 +117,8 @@ class SpeedBeeDataModel: ObservableObject {
         newWord = true
         showHint = false
         
+        currentWord = word
+        
         if !isError() {
             errorFound = false
             pointsReceived += returnPoints()
@@ -131,10 +131,9 @@ class SpeedBeeDataModel: ObservableObject {
         
         if limitMistakesOn {
             if mistakeCounter == 3 {
-                gameOver = true
+                gameEnd()
             }
         }
-        currentWord = ""
     }
     
     func shuffleLetters() {
@@ -157,7 +156,9 @@ class SpeedBeeDataModel: ObservableObject {
     }
     
     func gameEnd() {
+        timePause = true
         currentStat.update(pointsReceived: pointsReceived, wordCount: wordsFound.count, timePlayed: timePlayed)
+        gameOver = true
     }
     
     func isPangram(word: String) -> Bool {
@@ -186,7 +187,7 @@ class SpeedBeeDataModel: ObservableObject {
         }
     }
     
-    // ERROR MESSAGE
+    // ERROR MESSAGES
     
     func checkExcess() -> Bool {
         let enteredList = Array(currentWord)
@@ -223,9 +224,9 @@ class SpeedBeeDataModel: ObservableObject {
             return "Already found"
         } else if currentWord.count < 4 {
             return "Too short"
-        } else if !(currentWord.contains(letterCenter)) { // if the middle letter is missing
+        } else if !(currentWord.contains(letterCenter)) {
             return "Missing middle letter"
-        } else if checkExcess() { // if the word has excess letters
+        } else if checkExcess() {
             return "Includes excess letters"
         } else if !checkExists() || currentWord == "\(letterCenter)\(letterCenter)\(letterCenter)\(letterCenter)" {
             return "Not in word list"

@@ -37,8 +37,6 @@ struct ComplimentView: View {
             if dataModel.soundsOn {
                 if dataModel.returnCompliment() == "Pangram!" {
                     AudioServicesPlaySystemSound(1013)
-                } else {
-    //                AudioServicesPlaySystemSound(1336)
                 }
             }
             
@@ -56,10 +54,8 @@ struct ComplimentView: View {
 }
 
 
-struct ComplimentView_Previews: PreviewProvider {
-    static var previews: some View {
-        return ComplimentView()
-            .environmentObject(SpeedBeeDataModel())
-    }
-}
 
+#Preview {
+    ComplimentView()
+        .environmentObject(SpeedBeeDataModel())
+}

@@ -2,7 +2,7 @@
 //  StatsView.swift
 //  SpeedBee
 //
-//  Created by Cole Abrams on 2/14/24.
+//  Created by Cole Abrams on 5/6/24.
 //
 
 import SwiftUI
@@ -10,140 +10,171 @@ import SwiftUI
 struct StatsView: View {
     
     @EnvironmentObject var dataModel: SpeedBeeDataModel
+    @State var backgroundOffset: CGFloat = -2.5
+    @State var scrollToID: Double? = nil
+    @State private var menuOffset: CGFloat = -2.5
+    @State var timeSelected = 30
+    @State var timeIndex: Int = 0
+    var timesToSelect: [Int] = [30, 60, 120, 300, 600, 100000]
+    var yOffset: CGFloat = 20
     var navTitle: Bool = false
-    @State var timeSelected = 600
-    
+
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            
+            NavigationView {
                 
-                if !navTitle {
-                    Text("Statistics")
-                        .fontWeight(.semibold)
-                        .font(.system(size: 17))
-                }
-                
-                Divider()
-                ScrollView(.horizontal) {
-                    HStack {
-                        Button(action: {
-                            dataModel.currentStat.statsFilter = 600
-                            timeSelected = 600
-                        }) {
-                            Text("10:00")
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(timeSelected == 600 ? .yellow : .gray)
-                        
-                        Button(action: {
-                            dataModel.currentStat.statsFilter = 300
-                            timeSelected = 300
-                        }) {
-                            Text("5:00")
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(timeSelected == 300 ? .yellow : .gray)
-                        
-                        Button(action: {
-                            dataModel.currentStat.statsFilter = 120
-                            timeSelected = 120
-                        }) {
-                            Text("2:00")
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(timeSelected == 120 ? .yellow : .gray)
-                        
-                        Button(action: {
-                            dataModel.currentStat.statsFilter = 60
-                            timeSelected = 60
-                        }) {
-                            Text("1:00")
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(timeSelected == 60 ? .yellow : .gray)
-                        
-                        Button(action: {
-                            dataModel.currentStat.statsFilter = 30
-                            timeSelected = 30
-                        }) {
-                            Text("0:30")
-                        }
-                        .padding(.horizontal)
-                        .foregroundColor(timeSelected == 30 ? .yellow : .gray)
-                    }
-                    .fontWeight(.bold)
-                }
-                .frame(height: 30)
-                .onAppear {
-                    dataModel.currentStat.statsFilter = dataModel.timePlayed
-                    timeSelected = dataModel.timePlayed
-                }
-                
-                ScrollView {
+                VStack {
                     
-                    VStack {
-                        
-                        HStack {
-                            Text("Games")
-                                .font(.system(size: 25))
+                    if !navTitle {
+                        Text("Statistics")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 20))
+                    }
+                    
+                    
+                    ZStack {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            ScrollViewReader { scrollView in
+                                HStack {
+                                    Button(action: {
+                                        backgroundOffset = -2.5
+                                        timeSelected = 30
+                                    }) {
+                                        Text("0:30")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == -2.5 ? .yellow : .gray)
+                                    .id(-2.5)
+                                    
+                                    Button(action: {
+                                        backgroundOffset = -1.5
+                                        timeSelected = 60
+                                    }) {
+                                        Text("1:00")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == -1.5 ? .yellow : .gray)
+                                    .id(-1.5)
+                                    
+                                    Button(action: {
+                                        backgroundOffset = -0.5
+                                        timeSelected = 120
+                                    }) {
+                                        Text("2:00")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == -0.5 ? .yellow : .gray)
+                                    .id(-0.5)
+                                    
+                                    Button(action: {
+                                        backgroundOffset = 0.5
+                                        timeSelected = 300
+                                    }) {
+                                        Text("5:00")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == 0.5 ? .yellow : .gray)
+                                    .id(0.5)
+                                    
+                                    Button(action: {
+                                        backgroundOffset = 1.5
+                                        timeSelected = 600
+                                    }) {
+                                        Text("10:00")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == 1.5 ? .yellow : .gray)
+                                    .id(1.5)
+                                    
+                                    Button(action: {
+                                        backgroundOffset = 2.5
+                                        timeSelected = 100000
+                                    }) {
+                                        Text("Unlimited")
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(backgroundOffset == 2.5 ? .yellow : .gray)
+                                    .id(2.5)
+                                }
                                 .fontWeight(.bold)
-                                .padding(.leading, 20)
-                                .padding(.top, 30)
-                            Spacer()
+                                .onChange(of: backgroundOffset) { id in
+                                    
+                                    scrollToID = backgroundOffset
+                                    
+                                    if let id = scrollToID {
+                                        withAnimation {
+                                            scrollView.scrollTo(id, anchor: .center)
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        
-                        StatsPlaqueView(scoreTitle: "Games Played", scoreData: String(dataModel.currentStat.gamesPlayed), scoreIcon: "GamesPlayedIcon", scoreBest: false)
-                            .padding(.bottom, 100)
+                        .frame(height: 30)
+                        .overlay {
+                            if backgroundOffset != -2.5 {
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .frame(width: 150, height: 30)
+                                    .background(
+                                        LinearGradient(gradient: Gradient(colors: [Color(.white), Color(.white).opacity(0)]), startPoint: .leading, endPoint: .trailing)
+                                    )
+                                    .position(x: 50, y: 15)
+                                    .allowsHitTesting(false)
+                            }
+                            
+                            if backgroundOffset != 2.5 {
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .frame(width: 150, height: 30)
+                                    .background(
+                                        LinearGradient(gradient: Gradient(colors: [Color(.white), Color(.white).opacity(0)]), startPoint: .trailing, endPoint: .leading)
+                                    )
+                                    .position(x: geometry.size.width - 50, y: 15)
+                                    .allowsHitTesting(false)
+                            }
+                        }
                     }
-                    .padding(.bottom)
+                    .position(x: geometry.size.width / 2, y: yOffset)
                     
-                    VStack {
-                        HStack {
-                            Text("Score")
-                                .font(.system(size: 25))
-                                .fontWeight(.bold)
-                                .padding(.leading, 20)
-                                .padding(.top, 10)
-                            Spacer()
-                        }
-                        StatsPlaqueView(scoreTitle: "Highest Score", scoreData: String(dataModel.currentStat.highestScore), scoreIcon: "HighestScoreIcon", scoreBest: true)
-                            .padding(.bottom, 100)
+                    HStack(spacing: 0) {
                         
-                        StatsPlaqueView(scoreTitle: "Average Score", scoreData: String(dataModel.currentStat.averageScore), scoreIcon: "AverageScoreIcon", scoreBest: false)
-                            .padding(.bottom, 100)
+                        ForEach([30, 60, 120, 300, 600, 100000], id: \.self) { timeSelect in
+                            StatsPageView(timeSelect: timeSelect)
+                                .frame(width: geometry.size.width, height: geometry.size.height)
+                        }
                         
                     }
-                    .padding(.bottom)
-                    
-                    VStack {
-                        HStack {
-                            Text("Words")
-                                .font(.system(size: 25))
-                                .fontWeight(.bold)
-                                .padding(.leading, 20)
-                                .padding(.top, 10)
-                            Spacer()
-                        }
-                        StatsPlaqueView(scoreTitle: "Highest Word Count", scoreData: String(dataModel.currentStat.highestWordCount), scoreIcon: "HighestWordCountIcon", scoreBest: true)
-                            .padding(.bottom, 100)
-                        
-                        StatsPlaqueView(scoreTitle: "Average Word Count", scoreData: String(dataModel.currentStat.averageWordCount), scoreIcon: "AverageWordCountIcon", scoreBest: false)
-                            .padding(.bottom, 100)
-                    }
+                    .position(x: geometry.size.width / 2, y: yOffset + (navTitle ? 23 : 38))
+                    .offset(x: -(self.backgroundOffset * geometry.size.width))
+                    .animation(.default)
+                    .gesture(
+                        DragGesture()
+                            .onEnded({ value in
+                                if value.translation.width > 10 {
+                                    if self.backgroundOffset > -2 {
+                                        self.backgroundOffset -= 1
+                                        timeIndex -= 1
+                                        
+                                    }
+                                } else if value.translation.width < -10 {
+                                    if self.backgroundOffset < 2 {
+                                        self.backgroundOffset += 1
+                                        timeIndex += 1
+                                    }
+                                }
+                                timeSelected = timesToSelect[timeIndex]
+                                
+                            })
+                    )
                     
                 }
-                .background(Color(red: 0.932, green: 0.932, blue: 0.932))
-
             }
         }
-        
     }
 }
 
-
-struct StatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatsView()
-            .environmentObject(SpeedBeeDataModel())
-    }
+#Preview {
+    StatsView()
+        .environmentObject(SpeedBeeDataModel())
 }

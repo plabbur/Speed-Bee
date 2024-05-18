@@ -12,7 +12,7 @@ struct StatsPlaqueView: View {
     @EnvironmentObject var dataModel: SpeedBeeDataModel
 
     var scoreTitle: String = "Average Word Count"
-    var scoreData: String = "30"
+    var scoreData: Int = 30
     var scoreIcon: String = "AverageWordCountIcon"
     var scoreBest: Bool = true
     
@@ -31,7 +31,7 @@ struct StatsPlaqueView: View {
                                 .padding(.leading)
                                 .scaleEffect(1.2)
                             Spacer()
-                            Text(scoreData)
+                            Text(String(scoreData))
                                 .padding(.trailing, 20)
                                 .font(.title)
                                 .fontWeight(.bold)

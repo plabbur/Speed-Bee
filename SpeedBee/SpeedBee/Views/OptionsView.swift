@@ -46,11 +46,11 @@ struct OptionsView: View {
                                             Image("navArrowRight")
                                                 .padding(.trailing, 15)
                                         }
-                                        .padding(.bottom, 2)
+                                        .padding(.bottom, 8)
                                         .padding(.leading)
                                         .frame(width: geometry.size.width - 40, alignment: .leading)
                                         
-                                        NavigationLink(destination: HowToPlayView()) {
+                                        NavigationLink(destination: HowToPlayView().navigationTitle("Rules")) {
                                             Image("RulesNavIcon")
                                                 .padding(.trailing, 5)
                                             Text("How to play")
@@ -81,7 +81,6 @@ struct OptionsView: View {
                 .accentColor(.yellow)
                 
             }
-            
         }
     }
 }

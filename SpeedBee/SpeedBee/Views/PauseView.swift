@@ -62,7 +62,7 @@ struct PauseView: View {
                             .foregroundColor(.clear)
                             .frame(width: 298, height: 175)
                             .background(
-                                LinearGradient(gradient: Gradient(colors: [Color(red: 0.97, green: 0.85, blue: 0.24).opacity(0.10), Color(red: 0.97, green: 0.85, blue: 0.24).opacity(0.20)]), startPoint: .leading, endPoint: .trailing)
+                                LinearGradient(gradient: Gradient(colors: [Color("mainYellow").opacity(0.10), Color("mainYellow").opacity(0.20)]), startPoint: .leading, endPoint: .trailing)
                             )
                             .cornerRadius(20)
                         VStack {
@@ -117,9 +117,7 @@ struct PauseView: View {
     
 }
 
-struct PauseView_Previews: PreviewProvider {
-    static var previews: some View {
-        return PauseView()
-            .environmentObject(SpeedBeeDataModel())
-    }
+#Preview {
+    PauseView()
+        .environmentObject(SpeedBeeDataModel())
 }

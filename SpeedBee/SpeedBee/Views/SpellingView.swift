@@ -20,19 +20,18 @@ struct SpellingView: View {
         GeometryReader { geometry in
             VStack {
                 
-                TopMenu()
+                TopMenuView()
                     .frame(height: 20)
                     .padding(.bottom, 10)
                 
                 Divider()
 
-                // TIMER AND HINTS
                 TimerHintsView()
                     .padding(.top, 6)
                     .padding(.bottom, -100)
                 
                 ZStack {
-                    WordsFound()
+                    WordsFoundView()
                         .zIndex(1)
                         .padding(.bottom)
                     
@@ -60,13 +59,15 @@ struct SpellingView: View {
             .overlay(
                 dataModel.gameOver ? AnyView(EndgameView()) : AnyView(EmptyView())
             )
+            .overlay(
+                dataModel.gameOverConfirm ? AnyView(GameOverConfirmView()) : AnyView(EmptyView())
+            )
+            .ignoresSafeArea(.keyboard)
         }
     }
 }
 
-struct SpellingView_Previews: PreviewProvider {
-    static var previews: some View {
-        SpellingView()
-            .environmentObject(SpeedBeeDataModel())
-    }
+#Preview {
+    SpellingView()
+        .environmentObject(SpeedBeeDataModel())
 }

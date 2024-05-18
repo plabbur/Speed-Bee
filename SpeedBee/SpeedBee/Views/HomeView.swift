@@ -28,7 +28,7 @@ struct HomeView: View {
                         }
                         
                         Image("beeLogo")
-                            .resizable() // Make the image resizable
+                            .resizable()
                             .frame(width: 84, height: 104)
                             .padding(.top, 50.0)
                         Text("Speed Bee")
@@ -47,7 +47,6 @@ struct HomeView: View {
                         
                         if !dataModel.gameOver {
                             Button(action: { dataModel.onScreen = SpeedBeeDataModel.viewMode.GAME }) {
-                                // Action to perform when the button is pressed
                                 ZStack {
                                     Text("Continue Game")
                                         .foregroundColor(.white)
@@ -56,7 +55,7 @@ struct HomeView: View {
                                         .padding(.bottom, 18)
                                     HStack {
                                         Image("clockIcon")
-                                        Text(dataModel.minuteTimer())
+                                        Text(dataModel.gameTimeUnlimited ? "Unlimited" : dataModel.minuteTimer())
                                             .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.37))
                                             .font(.system(size: 14))
                                     }
@@ -94,7 +93,7 @@ struct HomeView: View {
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .background(
-                        LinearGradient(gradient: Gradient(colors: [Color(red: 0.97, green: 0.85, blue: 0.24).opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02)]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: [Color("mainYellow").opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02), Color(red: 0, green: 0, blue: 0).opacity(0.02)]), startPoint: .top, endPoint: .bottom)
                     )
                     
                 }

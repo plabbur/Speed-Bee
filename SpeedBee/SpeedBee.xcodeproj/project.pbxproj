@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E54131E62BE98D1000F6F9EB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54131E52BE98D1000F6F9EB /* StatsView.swift */; };
+		E54131E82BE98F0600F6F9EB /* StatsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54131E72BE98F0600F6F9EB /* StatsPageView.swift */; };
+		E57094DA2BAE4C79003813F4 /* GameOverConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57094D92BAE4C78003813F4 /* GameOverConfirmView.swift */; };
 		E5BD35902B7D5D6000659541 /* SpeedBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */; };
 		E5BD35922B7D5D6000659541 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35912B7D5D6000659541 /* ContentView.swift */; };
 		E5BD35942B7D5D6300659541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BD35932B7D5D6300659541 /* Assets.xcassets */; };
@@ -19,20 +22,23 @@
 		E5BD35AC2B7D6C8F00659541 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35AB2B7D6C8F00659541 /* SettingsView.swift */; };
 		E5BD35AE2B7D705C00659541 /* ChooseLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35AD2B7D705C00659541 /* ChooseLevelView.swift */; };
 		E5BD35B02B7D723300659541 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35AF2B7D723300659541 /* NavView.swift */; };
-		E5BD35B22B7D725000659541 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B12B7D725000659541 /* StatsView.swift */; };
 		E5BD35B42B7D725800659541 /* SpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B32B7D725800659541 /* SpellingView.swift */; };
 		E5BD35B62B7D7EE600659541 /* StatsPlaqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B52B7D7EE600659541 /* StatsPlaqueView.swift */; };
-		E5BD35B82B7D7F8C00659541 /* WordsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B72B7D7F8C00659541 /* WordsFound.swift */; };
-		E5BD35BA2B7D7FAA00659541 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B92B7D7FAA00659541 /* TopMenu.swift */; };
-		E5BD35BC2B7D7FCE00659541 /* TimerHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */; };
+		E5BD35B82B7D7F8C00659541 /* WordsFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B72B7D7F8C00659541 /* WordsFoundView.swift */; };
+		E5BD35BA2B7D7FAA00659541 /* TopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35B92B7D7FAA00659541 /* TopMenuView.swift */; };
+		E5BD35BC2B7D7FCE00659541 /* TimerHintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BB2B7D7FCE00659541 /* TimerHintsView.swift */; };
 		E5BD35BE2B7D90EE00659541 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */; };
 		E5BD35C02B7D936400659541 /* ComplimentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35BF2B7D936400659541 /* ComplimentView.swift */; };
 		E5E2F49B2B7ED4C100C9F140 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */; };
 		E5E2F49D2B7ED60600C9F140 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49C2B7ED60600C9F140 /* PauseView.swift */; };
 		E5E2F49F2B7EDF4000C9F140 /* EndgameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */; };
+		E5E2F4A12B81537800C9F140 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5E2F4A02B81537800C9F140 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E54131E52BE98D1000F6F9EB /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		E54131E72BE98F0600F6F9EB /* StatsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPageView.swift; sourceTree = "<group>"; };
+		E57094D92BAE4C78003813F4 /* GameOverConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverConfirmView.swift; sourceTree = "<group>"; };
 		E5BD358C2B7D5D6000659541 /* SpeedBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBeeApp.swift; sourceTree = "<group>"; };
 		E5BD35912B7D5D6000659541 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,17 +52,17 @@
 		E5BD35AB2B7D6C8F00659541 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E5BD35AD2B7D705C00659541 /* ChooseLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelView.swift; sourceTree = "<group>"; };
 		E5BD35AF2B7D723300659541 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
-		E5BD35B12B7D725000659541 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		E5BD35B32B7D725800659541 /* SpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingView.swift; sourceTree = "<group>"; };
 		E5BD35B52B7D7EE600659541 /* StatsPlaqueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPlaqueView.swift; sourceTree = "<group>"; };
-		E5BD35B72B7D7F8C00659541 /* WordsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsFound.swift; sourceTree = "<group>"; };
-		E5BD35B92B7D7FAA00659541 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
-		E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHints.swift; sourceTree = "<group>"; };
+		E5BD35B72B7D7F8C00659541 /* WordsFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsFoundView.swift; sourceTree = "<group>"; };
+		E5BD35B92B7D7FAA00659541 /* TopMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuView.swift; sourceTree = "<group>"; };
+		E5BD35BB2B7D7FCE00659541 /* TimerHintsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHintsView.swift; sourceTree = "<group>"; };
 		E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E5BD35BF2B7D936400659541 /* ComplimentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplimentView.swift; sourceTree = "<group>"; };
 		E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		E5E2F49C2B7ED60600C9F140 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameView.swift; sourceTree = "<group>"; };
+		E5E2F4A02B81537800C9F140 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "SpeedBee/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,12 @@
 		E5BD358E2B7D5D6000659541 /* SpeedBee */ = {
 			isa = PBXGroup;
 			children = (
-				E5BD35A22B7D6ABD00659541 /* ViewModels */,
-				E5BD35A12B7D6AB700659541 /* Views */,
 				E5BD359E2B7D6A7200659541 /* Model */,
+				E5BD35A12B7D6AB700659541 /* Views */,
 				E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */,
 				E5BD35912B7D5D6000659541 /* ContentView.swift */,
 				E5BD35932B7D5D6300659541 /* Assets.xcassets */,
+				E5E2F4A02B81537800C9F140 /* Launch Screen.storyboard */,
 				E5BD35952B7D5D6300659541 /* Preview Content */,
 			);
 			path = SpeedBee;
@@ -111,6 +117,7 @@
 		E5BD359E2B7D6A7200659541 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5BD35A32B7D6ACB00659541 /* SpeedBeeDataModel.swift */,
 				E5BD359F2B7D6A8300659541 /* Statistic.swift */,
 			);
 			path = Model;
@@ -125,27 +132,21 @@
 				E5BD35AB2B7D6C8F00659541 /* SettingsView.swift */,
 				E5BD35AD2B7D705C00659541 /* ChooseLevelView.swift */,
 				E5BD35AF2B7D723300659541 /* NavView.swift */,
-				E5BD35B12B7D725000659541 /* StatsView.swift */,
+				E54131E52BE98D1000F6F9EB /* StatsView.swift */,
+				E54131E72BE98F0600F6F9EB /* StatsPageView.swift */,
 				E5BD35B52B7D7EE600659541 /* StatsPlaqueView.swift */,
 				E5BD35B32B7D725800659541 /* SpellingView.swift */,
+				E57094D92BAE4C78003813F4 /* GameOverConfirmView.swift */,
 				E5E2F49E2B7EDF4000C9F140 /* EndgameView.swift */,
 				E5E2F49C2B7ED60600C9F140 /* PauseView.swift */,
 				E5BD35BD2B7D90EE00659541 /* KeyboardView.swift */,
-				E5BD35B72B7D7F8C00659541 /* WordsFound.swift */,
-				E5BD35B92B7D7FAA00659541 /* TopMenu.swift */,
-				E5BD35BB2B7D7FCE00659541 /* TimerHints.swift */,
+				E5BD35B72B7D7F8C00659541 /* WordsFoundView.swift */,
+				E5BD35B92B7D7FAA00659541 /* TopMenuView.swift */,
+				E5BD35BB2B7D7FCE00659541 /* TimerHintsView.swift */,
 				E5BD35BF2B7D936400659541 /* ComplimentView.swift */,
 				E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E5BD35A22B7D6ABD00659541 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				E5BD35A32B7D6ACB00659541 /* SpeedBeeDataModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5E2F4A12B81537800C9F140 /* Launch Screen.storyboard in Resources */,
 				E5BD35972B7D5D6300659541 /* Preview Assets.xcassets in Resources */,
 				E5BD35942B7D5D6300659541 /* Assets.xcassets in Resources */,
 			);
@@ -218,27 +220,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5BD35B22B7D725000659541 /* StatsView.swift in Sources */,
 				E5BD35AE2B7D705C00659541 /* ChooseLevelView.swift in Sources */,
 				E5BD35C02B7D936400659541 /* ComplimentView.swift in Sources */,
-				E5BD35BC2B7D7FCE00659541 /* TimerHints.swift in Sources */,
+				E5BD35BC2B7D7FCE00659541 /* TimerHintsView.swift in Sources */,
 				E5BD35A02B7D6A8300659541 /* Statistic.swift in Sources */,
 				E5BD35AC2B7D6C8F00659541 /* SettingsView.swift in Sources */,
 				E5E2F49F2B7EDF4000C9F140 /* EndgameView.swift in Sources */,
 				E5BD35922B7D5D6000659541 /* ContentView.swift in Sources */,
+				E54131E62BE98D1000F6F9EB /* StatsView.swift in Sources */,
 				E5E2F49D2B7ED60600C9F140 /* PauseView.swift in Sources */,
 				E5BD35B62B7D7EE600659541 /* StatsPlaqueView.swift in Sources */,
 				E5BD35902B7D5D6000659541 /* SpeedBeeApp.swift in Sources */,
 				E5BD35B42B7D725800659541 /* SpellingView.swift in Sources */,
-				E5BD35BA2B7D7FAA00659541 /* TopMenu.swift in Sources */,
+				E54131E82BE98F0600F6F9EB /* StatsPageView.swift in Sources */,
+				E5BD35BA2B7D7FAA00659541 /* TopMenuView.swift in Sources */,
 				E5BD35AA2B7D6C7F00659541 /* HowToPlayView.swift in Sources */,
 				E5BD35A82B7D6C0300659541 /* OptionsView.swift in Sources */,
-				E5BD35B82B7D7F8C00659541 /* WordsFound.swift in Sources */,
+				E5BD35B82B7D7F8C00659541 /* WordsFoundView.swift in Sources */,
 				E5BD35A62B7D6B2D00659541 /* HomeView.swift in Sources */,
 				E5BD35BE2B7D90EE00659541 /* KeyboardView.swift in Sources */,
 				E5BD35B02B7D723300659541 /* NavView.swift in Sources */,
 				E5E2F49B2B7ED4C100C9F140 /* ErrorMessage.swift in Sources */,
 				E5BD35A42B7D6ACB00659541 /* SpeedBeeDataModel.swift in Sources */,
+				E57094DA2BAE4C79003813F4 /* GameOverConfirmView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +382,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -407,6 +412,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,5 +1,5 @@
 //
-//  WordsFound.swift
+//  WordsFoundView.swift
 //  SpeedBee
 //
 //  Created by Cole Abrams on 2/14/24.
@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct WordsFound: View {
+struct WordsFoundView: View {
     @EnvironmentObject var dataModel: SpeedBeeDataModel
     @State private var isExpanded: Bool = false
     
     var wordsFound: [String] = ["Chimpanzee", "Ardvark", "Elephant", "Baboon", "Coyote", "Dragon"]
+    @State private var color = Color(red: 0.906, green: 0.906, blue: 0.906)
+
     
     var body: some View {
         
         GeometryReader { geometry in
 
             ZStack {
-                // WORDS FOUND
                 DisclosureGroup(isExpanded: $isExpanded) {
                     ZStack {
                         List {
@@ -47,6 +48,7 @@ struct WordsFound: View {
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: 20)
+                        
 
                         
                     } else {
@@ -68,7 +70,22 @@ struct WordsFound: View {
                 .accentColor(.black)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(red: 0.906, green: 0.906, blue: 0.906), lineWidth: 2)
+                        .stroke(color, lineWidth: 2)
+                        .onChange(of: dataModel.currentWord) { newValue in
+                            do {
+                                if !dataModel.errorFound {
+                                    withAnimation(.easeInOut(duration: 0.5)) {
+                                        color = Color.yellow
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            color = Color(red: 0.906, green: 0.906, blue: 0.906)
+                                        }
+                                    }
+                                }
+                        }
+                    }
                 )
                 .padding()
             }
@@ -76,10 +93,7 @@ struct WordsFound: View {
     }
 }
 
-
-struct WordsFound_Previews: PreviewProvider {
-    static var previews: some View {
-        WordsFound()
-            .environmentObject(SpeedBeeDataModel())
-    }
+#Preview {
+    WordsFoundView()
+        .environmentObject(SpeedBeeDataModel())
 }

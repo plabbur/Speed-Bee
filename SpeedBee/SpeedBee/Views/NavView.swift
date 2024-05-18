@@ -45,6 +45,9 @@ struct NavView: View {
                     )
                 }
             }
+            .onAppear {
+                dataModel.timePlayed = 30
+            }
             .accentColor(.yellow)
         }
     }

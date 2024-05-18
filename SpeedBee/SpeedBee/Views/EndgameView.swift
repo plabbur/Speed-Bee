@@ -42,7 +42,6 @@ struct EndgameView: View {
                                 Spacer()
                                 
                                 NavigationLink(destination: StatsView(navTitle: true).navigationTitle("Statistics")) {
-                                    
                                     ZStack() {
                                         Rectangle()
                                             .foregroundColor(.clear)
@@ -153,9 +152,6 @@ struct EndgameView: View {
                                 )
                         }
                     }
-                    .onAppear {
-                        dataModel.currentStat.update(pointsReceived: dataModel.pointsReceived, wordCount: dataModel.wordsFound.count, timePlayed: dataModel.timePlayed)
-                    }
                     
                     Button("New Game") {
                         dataModel.showLevels = true
@@ -168,20 +164,15 @@ struct EndgameView: View {
                     .cornerRadius(30)
                     .padding(.bottom, 8)
                     
-                    NavigationLink(destination: NavView()) {
-                        Text("Main")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 8)
-                            
-                    }
-                    .onTapGesture {
+                    Button("Main") {
                         dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME
                     }
-                    
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 8)
                     
                 }
-                .background(Color(red: 0.97, green: 0.85, blue: 0.24))
+                .background(Color("mainYellow"))
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
             .accentColor(.yellow)
@@ -194,12 +185,11 @@ struct EndgameView: View {
                 dataModel.showLevels ? AnyView(ChooseLevelView()) : AnyView(EmptyView())
             )
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
-struct EndgameView_Previews: PreviewProvider {
-    static var previews: some View {
-        EndgameView()
-            .environmentObject(SpeedBeeDataModel())
-    }
+#Preview {
+    EndgameView()
+        .environmentObject(SpeedBeeDataModel())
 }

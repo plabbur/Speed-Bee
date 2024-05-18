@@ -11,15 +11,14 @@ import SwiftUI
 struct Statistic: Codable {
     
     var scoreList: [[Int]] = [[Int]]()
-    var exampleScoreList: [[Int]] = [[0, 10], [1, 20], [2, 30], [3, 40]]
+    var exampleScoreList: [[Int]] = [[2, 30], [8, 30], [0, 60], [2, 300], [3, 600]]
     var wordCountList: [[Int]] = [[Int]]()
-    var statsFilter: Int = 30
     
-    func filterList(list: [[Int]]) -> [Int] {
-        var filteredList: [Int] = []
+    func filterList(list: [[Int]], filter: Int) -> [Int] {
+        var filteredList: [Int] = [Int]()
         
         for item in 0..<list.count {
-            if list[item][1] == statsFilter {
+            if list[item][1] == filter {
                 filteredList.append(list[item][0])
             }
         }
@@ -28,32 +27,40 @@ struct Statistic: Codable {
     }
     
     
-    var highestScore: Int {
-        filterList(list: scoreList).max() ?? 0
+    func highestScore(filter: Int) -> Int {
+        filterList(list: scoreList, filter: filter).max() ?? 0
     }
     
-    var averageScore: Int {
-        if filterList(list: scoreList).isEmpty {
+    func averageScore(filter: Int) -> Int {
+        if filterList(list: scoreList, filter: filter).isEmpty {
             0
         } else {
-            filterList(list: scoreList).reduce(0, +) / filterList(list: scoreList).count
+            filterList(list: scoreList, filter: filter).reduce(0, +) / filterList(list: scoreList, filter: filter).count
         }
     }
     
-    var highestWordCount: Int {
-        filterList(list: wordCountList).max() ?? 0
+    func highestWordCount(filter: Int) -> Int {
+        filterList(list: wordCountList, filter: filter).max() ?? 0
     }
     
-    var averageWordCount: Int {
-        if filterList(list: wordCountList).isEmpty {
+    func averageWordCount(filter: Int) -> Int {
+        if filterList(list: wordCountList, filter: filter).isEmpty {
             0
         } else {
-            filterList(list: wordCountList).reduce(0, +) / wordCountList.count
+            filterList(list: wordCountList, filter: filter).reduce(0, +) / wordCountList.count
         }
     }
     
-    var gamesPlayed: Int {
-        filterList(list: scoreList).count
+    func gamesPlayed(filter: Int) -> Int {
+        filterList(list: scoreList, filter: filter).count
+    }
+    
+    func saveStat() {
+        
+        if let encoded = try? JSONEncoder().encode(self) {
+            
+            UserDefaults.standard.set(encoded, forKey: "Stat")
+        }
     }
     
     static func loadStat() -> Statistic {
@@ -71,10 +78,12 @@ struct Statistic: Codable {
     mutating func update(pointsReceived: Int, wordCount: Int, timePlayed: Int) {
         scoreList.append([pointsReceived, timePlayed])
         wordCountList.append([wordCount, timePlayed])
+        saveStat()
     }
     
     mutating func resetStats() {
-        scoreList = [[Int]]()
-        wordCountList = [[Int]]()
+        scoreList.removeAll()
+        wordCountList.removeAll()
+        saveStat()
     }
 }

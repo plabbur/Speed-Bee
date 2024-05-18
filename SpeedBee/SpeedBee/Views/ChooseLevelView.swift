@@ -22,6 +22,18 @@ struct ChooseLevelView: View {
                     .position(x: (geometry.size.width / 2), y: geometry.size.height)
                     .overlay(
                         List {
+                            
+                            Button(action: {
+                                dataModel.timeRemaining = 100000
+                                dataModel.timePlayed = 100000
+                                dataModel.newGame()
+                            } ) {
+                                Text("Unlimited")
+                            }
+                            .frame(width: geometry.size.width, alignment: .center)
+                            .padding(.vertical, 8)
+                            
+                            
                             Button(action: {
                                 dataModel.timeRemaining = 600
                                 dataModel.timePlayed = 600
@@ -82,7 +94,7 @@ struct ChooseLevelView: View {
                         .position(x: (geometry.size.width / 2), y: geometry.size.height - 20)
                     )
             }
-            .frame(height: geometry.size.height + 200)
+            .frame(height: geometry.size.height + 320)
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -93,7 +105,7 @@ struct ChooseLevelView: View {
                     endPoint: .trailing
                 )
                 .onTapGesture {
-                    dataModel.onScreen = SpeedBeeDataModel.viewMode.HOME
+                    dataModel.showLevels = false
                 }
             )
             .ignoresSafeArea()
