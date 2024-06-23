@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  SpeedBee
 //
-//  Created by Cole Abrams on 2/14/24.
+//  Created by Cole Abrams
 //
 
 import SwiftUI
