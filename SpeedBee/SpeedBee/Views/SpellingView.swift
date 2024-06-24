@@ -39,6 +39,12 @@ struct SpellingView: View {
                         .padding(.top, 150)
                         .overlay(
                             VStack {
+                                
+                                if dataModel.showNoHintsMessage {
+                                    NoHintsMessage()
+                                        .padding(.bottom, 14)
+                                }
+                                
                                 if dataModel.newWord {
                                     if dataModel.errorFound {
                                         ErrorMessage(errorMessage: dataModel.getErrorMessage())

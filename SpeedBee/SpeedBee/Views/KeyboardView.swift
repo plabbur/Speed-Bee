@@ -12,7 +12,7 @@ struct KeyboardView: View {
             let axisX: CGFloat = 62
 
             VStack {
-                TextField((dataModel.showHint ? dataModel.hintChars : ""), text: $textInput)
+                TextField((dataModel.showHint ? dataModel.currentHint : ""), text: $textInput)
                     .focused($isFocused)
                     .frame(width: 300, height: 30)
                     .autocapitalization(.allCharacters)

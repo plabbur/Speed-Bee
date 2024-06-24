@@ -10,6 +10,10 @@
 		E54131E62BE98D1000F6F9EB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54131E52BE98D1000F6F9EB /* StatsView.swift */; };
 		E54131E82BE98F0600F6F9EB /* StatsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54131E72BE98F0600F6F9EB /* StatsPageView.swift */; };
 		E57094DA2BAE4C79003813F4 /* GameOverConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57094D92BAE4C78003813F4 /* GameOverConfirmView.swift */; };
+		E5B9D06E2C2A08C900FA566D /* all_letters.txt in Resources */ = {isa = PBXBuildFile; fileRef = E5B9D06D2C2A08C800FA566D /* all_letters.txt */; };
+		E5B9D0702C2A094B00FA566D /* all_pangrams.txt in Resources */ = {isa = PBXBuildFile; fileRef = E5B9D06F2C2A094B00FA566D /* all_pangrams.txt */; };
+		E5B9D0722C2A0E3E00FA566D /* NoHintsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B9D0712C2A0E3E00FA566D /* NoHintsMessage.swift */; };
+		E5B9D0742C2A16FC00FA566D /* scrapeArchive.py in Resources */ = {isa = PBXBuildFile; fileRef = E5B9D0732C2A16FC00FA566D /* scrapeArchive.py */; };
 		E5BD35902B7D5D6000659541 /* SpeedBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */; };
 		E5BD35922B7D5D6000659541 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD35912B7D5D6000659541 /* ContentView.swift */; };
 		E5BD35942B7D5D6300659541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5BD35932B7D5D6300659541 /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 		E54131E52BE98D1000F6F9EB /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		E54131E72BE98F0600F6F9EB /* StatsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPageView.swift; sourceTree = "<group>"; };
 		E57094D92BAE4C78003813F4 /* GameOverConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverConfirmView.swift; sourceTree = "<group>"; };
+		E5B9D06D2C2A08C800FA566D /* all_letters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = all_letters.txt; path = SpeedBee/all_letters.txt; sourceTree = SOURCE_ROOT; };
+		E5B9D06F2C2A094B00FA566D /* all_pangrams.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all_pangrams.txt; sourceTree = "<group>"; };
+		E5B9D0712C2A0E3E00FA566D /* NoHintsMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHintsMessage.swift; sourceTree = "<group>"; };
+		E5B9D0732C2A16FC00FA566D /* scrapeArchive.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = scrapeArchive.py; sourceTree = "<group>"; };
 		E5BD358C2B7D5D6000659541 /* SpeedBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBeeApp.swift; sourceTree = "<group>"; };
 		E5BD35912B7D5D6000659541 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +103,9 @@
 		E5BD358E2B7D5D6000659541 /* SpeedBee */ = {
 			isa = PBXGroup;
 			children = (
+				E5B9D06D2C2A08C800FA566D /* all_letters.txt */,
+				E5B9D06F2C2A094B00FA566D /* all_pangrams.txt */,
+				E5B9D0732C2A16FC00FA566D /* scrapeArchive.py */,
 				E5BD359E2B7D6A7200659541 /* Model */,
 				E5BD35A12B7D6AB700659541 /* Views */,
 				E5BD358F2B7D5D6000659541 /* SpeedBeeApp.swift */,
@@ -145,6 +156,7 @@
 				E5BD35BB2B7D7FCE00659541 /* TimerHintsView.swift */,
 				E5BD35BF2B7D936400659541 /* ComplimentView.swift */,
 				E5E2F49A2B7ED4C100C9F140 /* ErrorMessage.swift */,
+				E5B9D0712C2A0E3E00FA566D /* NoHintsMessage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +219,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B9D06E2C2A08C900FA566D /* all_letters.txt in Resources */,
+				E5B9D0702C2A094B00FA566D /* all_pangrams.txt in Resources */,
+				E5B9D0742C2A16FC00FA566D /* scrapeArchive.py in Resources */,
 				E5E2F4A12B81537800C9F140 /* Launch Screen.storyboard in Resources */,
 				E5BD35972B7D5D6300659541 /* Preview Assets.xcassets in Resources */,
 				E5BD35942B7D5D6300659541 /* Assets.xcassets in Resources */,
@@ -229,6 +244,7 @@
 				E5BD35922B7D5D6000659541 /* ContentView.swift in Sources */,
 				E54131E62BE98D1000F6F9EB /* StatsView.swift in Sources */,
 				E5E2F49D2B7ED60600C9F140 /* PauseView.swift in Sources */,
+				E5B9D0722C2A0E3E00FA566D /* NoHintsMessage.swift in Sources */,
 				E5BD35B62B7D7EE600659541 /* StatsPlaqueView.swift in Sources */,
 				E5BD35902B7D5D6000659541 /* SpeedBeeApp.swift in Sources */,
 				E5BD35B42B7D725800659541 /* SpellingView.swift in Sources */,

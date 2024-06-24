@@ -100,7 +100,10 @@ struct TimerHintsView: View {
                     }
                     
                     if dataModel.hintsOn {
-                        Button(action: { dataModel.showHint = true }) {
+                        Button(action: { 
+                            dataModel.getHint()
+                            dataModel.showHint = true
+                        }) {
                             Text("Hint")
                             Image("hintBulbYellow")
                         }
