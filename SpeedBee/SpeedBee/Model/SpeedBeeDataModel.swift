@@ -13,7 +13,23 @@ class SpeedBeeDataModel: ObservableObject {
     @AppStorage("VibrationOn") var vibrationOn: Bool = false
     @AppStorage("HintsOn") var hintsOn: Bool = false
     @AppStorage("LimitMistakes") var limitMistakesOn: Bool = true
-    
+    @AppStorage("UsedIndices") private var usedIndicesData: Data = Data()
+        
+    var usedIndices: [Int] {
+        get {
+            // Decode the Data into [Int]
+            if let decodedArray = try? JSONDecoder().decode([Int].self, from: usedIndicesData) {
+                return decodedArray
+            }
+            return []
+        }
+        set {
+            // Encode the array into Data
+            if let encodedData = try? JSONEncoder().encode(newValue) {
+                usedIndicesData = encodedData
+            }
+        }
+    }
     @Published var timePause = false
     @Published var timePlayed = 0
     @Published var timeRemaining = 0
@@ -109,10 +125,15 @@ class SpeedBeeDataModel: ObservableObject {
             allLetters = playedLetters
         }
         
-        chosenIndex = Int.random(in: 0...(allLetters.count - 1))
+        while true {
+            chosenIndex = Int.random(in: 0...(allLetters.count - 1))
+            if !usedIndices.contains(chosenIndex) {
+                usedIndices.append(chosenIndex)
+                break
+            }
+        }
+        
         chosenLetters = allLetters[chosenIndex]
-        playedLetters.append(chosenLetters)
-        allLetters.remove(at: chosenIndex)
         
         pangramAsList = []
         for char in chosenLetters {
@@ -122,7 +143,7 @@ class SpeedBeeDataModel: ObservableObject {
         return pangramAsList
     }
     
-    func newGame() {        
+    func newGame() {
         if timeRemaining > 98999 {
             gameTimeUnlimited = true
         }
@@ -136,6 +157,8 @@ class SpeedBeeDataModel: ObservableObject {
         currentWord = ""
         pointsReceived = 0
         mistakeCounter = 0
+//        playedLetters.append(chosenLetters)
+//        allLetters.remove(at: chosenIndex)
         
         gameOver = false
         showHint = false
@@ -146,7 +169,6 @@ class SpeedBeeDataModel: ObservableObject {
     }
     
     func getHint() {
-        
         let gamePangrams: [String] = allPangrams[chosenIndex]
         
         var allPangramsFound = true
@@ -221,6 +243,7 @@ class SpeedBeeDataModel: ObservableObject {
         timePause = true
         currentStat.update(pointsReceived: pointsReceived, wordCount: wordsFound.count, timePlayed: timePlayed)
         gameOver = true
+        
     }
     
     func isPangram(word: String) -> Bool {
